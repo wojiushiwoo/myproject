@@ -32,8 +32,12 @@ urlpatterns = [
     url(r'^types/delete/$', typesviews.delete, name = "myadmin_types_delete"),
     url(r'^types/edit/$', typesviews.edit, name = "myadmin_types_edit"),
 
-
-
+     # 商品管理，分开写，好改
+    url(r'^goods/add/$', goodsviews.add, name = "myadmin_goods_add"),
+    url(r'^goods/index/$', goodsviews.index, name = "myadmin_goods_list"),
+    url(r'^goods/delete/$', goodsviews.delete, name = "myadmin_goods_delete"),
+    url(r'^goods/edit/$', goodsviews.edit, name = "myadmin_goods_edit"),
+    # 
 
 
 

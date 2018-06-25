@@ -257,13 +257,13 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="table-list.html">
+                            <a href="{{ url 'myadmin_goods_add' }}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商品添加
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="table-list-img.html">
+                            <a href="{{ url 'myadmin_goods_list' }}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商品列表
                             </a>
                         </li>
@@ -296,6 +296,7 @@
         <div class="tpl-content-wrapper">
 
             <div class="container-fluid am-cf">
+                {% block header %}
                 <div class="row">
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
                         <div class="page-header-heading"><span class="am-icon-home page-header-heading-icon"></span> 部件首页 <small>Amaze UI</small></div>
@@ -305,7 +306,7 @@
                         <button type="button" class="page-header-button"><span class="am-icon-paint-brush"></span> 设置</button>
                     </div>
                 </div>
-
+            {% endblock %}
             </div>
 
             <div class="row-content am-cf">
@@ -550,6 +551,10 @@
     <script src="/static/myadmin/js/dataTables.responsive.min.js"></script>
     <script src="/static/myadmin/js/app.js"></script>
 
+    <script type="text/javascript">
+        a = '{{ request.path }}'
+        link = $('a[href="'+a+'"]').addClass('active').parents('ul').show()
+    </script>
 </body>
 
 </html>
