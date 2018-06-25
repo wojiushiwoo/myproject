@@ -3,4 +3,4 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
 
-    return HttpResonse('前台页面')
+    return HttpResponse('前台页面')
