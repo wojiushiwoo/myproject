@@ -16,7 +16,7 @@ class Users(models.Model):
 
 
 # 后台：商品分类模型types
-class Type(models.Model):
+class Types(models.Model):
     """
     允许无限分类
     实际使用时多为2级，少数3级，4级已经不常用，因为层数越多，
@@ -38,12 +38,13 @@ class Goods(models.Model):
     # 一对多，一个typeid对应Types里面的多个分类（或者称之为标签）
     typeid = models.ForeignKey(to ="Types", to_field="id")
     title = models.CharField(max_length=255)
-    desr = models.CharField(max_length=255)
+    descr = models.CharField(max_length=255)
     info = models.TextField(null = True)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     pics = models.CharField(max_length=100)
     # 0 新发布，1 下架，还可以设置更多状态
     status = models.IntegerField(default = 0)
+    store = models.IntegerField(default = 0)
     num = models.IntegerField(default = 0)
     clicknum = models.IntegerField(default = 0)
     addtime = models.DateTimeField(auto_now_add = True)

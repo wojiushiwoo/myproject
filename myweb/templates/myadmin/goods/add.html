@@ -16,6 +16,9 @@
 {% endblock header %}
 
 {% block con %}
+<link rel="stylesheet" type="text/css" href="/static/myadmin/css/bootstrap-fileinput.css">
+<script type="text/javascript" src="/static/myadmin/js/bootstrap-fileinput.js"></script>
+
 <div class="row">
     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
         <div class="widget am-cf">
@@ -37,7 +40,18 @@
                                     <option value="{{ v.id }}">{{ v.name }}</option>
                                 {% endif %}
                             {% endfor %}
-                        </select>                       
+                            </select>
+                                  
+                        </div>                 
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="user-name" class="am-u-sm-3 am-form-label">
+                            商品名称
+                        </label>
+                        <div class="am-u-sm-9">
+                            <input type="text"  name="title"  required class="tpl-form-input"  placeholder="请输入商品名称">
+                        </div>
                     </div>
 
                     <div class="am-form-group">
@@ -61,7 +75,7 @@
                             商品库存数量
                         </label>
                         <div class="am-u-sm-9">
-                            <input type="text"  name="store"  required class="tpl-form-input"  placeholder="请输入商品描述">
+                            <input type="text"  name="store"  required class="tpl-form-input"  placeholder="请输入商品数量">
                         </div>
                     </div>
                     <!-- 该列是川哥网上找的 -->
@@ -69,14 +83,14 @@
                         <label for="user-weibo" class="am-u-sm-3 am-form-label">上传商品图片 </label>
                        <div class="am-u-sm-9 fileinput fileinput-new" data-provides="fileinput"  id="exampleInputUpload">
                            <div class="tpl-form-file-img fileinput-new thumbnail" >
-                               <img id='picImg'  src="{{ uinfo.pic }}" width="150" />
+                               <img id='picImg'  src="{{ uinfo.pics }}" width="150" />
                            </div>
                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                            <div>
                                <span class="btn btn-primary btn-file">
                                    <span class="fileinput-new am-btn am-btn-danger am-btn-sm">选择文件</span>
                                    <span class="fileinput-exists am-btn am-btn-danger am-btn-sm">换一张</span>
-                                   <input type="file" name="pic" id="picID" accept="image/gif,image/jpeg,image/x-png"/>
+                                   <input type="file" name="pics" id="picID" accept="image/gif,image/jpeg,image/x-png"/ >
                                </span>
                                <a href="javascript:;" class=" fileinput-exists am-btn am-btn-danger am-btn-sm" data-dismiss="fileinput">移除</a>
                            </div>

@@ -257,13 +257,13 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="{{ url 'myadmin_goods_add' }}">
+                            <a href="{% url 'myadmin_goods_add' %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商品添加
                             </a>
                         </li>
 
                         <li class="sidebar-nav-link">
-                            <a href="{{ url 'myadmin_goods_list' }}">
+                            <a href="{% url 'myadmin_goods_list' %}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商品列表
                             </a>
                         </li>
@@ -556,5 +556,5 @@
         link = $('a[href="'+a+'"]').addClass('active').parents('ul').show()
     </script>
 </body>
-
+ 
 </html>

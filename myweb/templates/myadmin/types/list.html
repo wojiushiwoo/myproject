@@ -52,20 +52,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for v in typeslist %}
+                            {% for v in tlist %}
                                 <tr>
                                     <td class="am-text-middle">{{ v.id }}</td>           
                                     <td class="am-text-middle">{{ v.name }}</td>
-                                    <!-- 这里设置为显示名字，而不是pid数字 -->
+                                    <!-- 这里设置为显示名字，而不是pid数字 {{ v.pname }} --> 
                                     <td class="am-text-middle">{{ v.pname }}</td>
                                     
-                                 
-                                   
+                                    <!-- 要把编辑和删除也包裹在td中，才会以列表的形式一起展示出来-->
+                                    <td class="am-text-middle">
                                         <div class="tpl-table-black-operation">
-                                            <a href="{% url 'myadmin_types_edit' %}?uid={{ v.id }}">
+                                            <a href="{% url 'myadmin_types_edit' %}?tid={{ v.id }}">
                                                 <i class="am-icon-pencil"></i> 编辑
                                             </a>
-                                            <a href="{% url 'myadmin_types_delete' %}?uid={{ v.id }}" class="tpl-table-black-operation-del">
+                                            <a href="javascript:void(0)" class="tpl-table-black-operation-del">
                                                 <i class="am-icon-trash"></i> 删除
                                             </a>
                                         </div>
@@ -102,11 +102,11 @@
     // 删除
     $('.tpl-table-black-operation-del').click(function(){
 
-        id = $(this).parents('tr').find('td:eq(0)')text()
+        id = $(this).parents('tr').find('td:eq(0)').text()
         // $(this)这一句不能在ajax里面写，含义会变化
         a=$(this)
 
-        $.get('{% url "myadmin_types_delete" %}', {uid:id}, function(data){
+        $.get('{% url "myadmin_types_delete" %}', {tid:id}, function(data){
             alert(data.msg)
 
             if(data.code==0){

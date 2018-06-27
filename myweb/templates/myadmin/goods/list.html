@@ -87,7 +87,7 @@
                                 <tr>
                                     <td class="am-text-middle">{{ v.id }}</td>
                                     <td>
-                                        <img src="{{ v.pic }}" class="tpl-table-line-img" alt="">
+                                        <img src="{{ v.pics }}" class="tpl-table-line-img" alt="">
                                     </td>
                                     <td class="am-text-middle">{{ v.title }}</td>
                                     <td class="am-text-middle">{{ v.typeid.name }}</td>
@@ -104,13 +104,13 @@
 
 
                                     </td>
-                                    <td class="am-text-middle">{{     v.addtime|date:'Y-m-d H:i:s'  }}</td>
+                                    <td class="am-text-middle">{{ v.addtime|date:'Y-m-d H:i:s'  }}</td>
                                     <td class="am-text-middle">
                                         <div class="tpl-table-black-operation">
-                                            <a href="{% url 'myadmin_goods_edit' %}?uid={{ v.id }}">
+                                            <a href="{% url 'myadmin_goods_edit' %}?gid={{ v.id }}">
                                                 <i class="am-icon-pencil"></i> 编辑
                                             </a>
-                                            <a href="{% url 'myadmin_goods_delete' %}?uid={{ v.id }}" class="tpl-table-black-operation-del">
+                                            <a href="javascript:void(0)" class="tpl-table-black-operation-del">
                                                 <i class="am-icon-trash"></i> 删除
                                             </a>
                                         </div>
@@ -147,11 +147,11 @@
     // 删除
     $('.tpl-table-black-operation-del').click(function(){
 
-        id = $(this).parents('tr').find('td:eq(0)')text()
+        id = $(this).parents('tr').find('td:eq(0)').text()
         // $(this)这一句不能在ajax里面写，含义会变化
         a=$(this)
 
-        $.get('{% url "myadmin_goods_delete" %}', {uid:id}, function(data){
+        $.get('{% url "myadmin_goods_delete" %}', {gid:id}, function(data){
             alert(data.msg)
 
             if(data.code==0){
