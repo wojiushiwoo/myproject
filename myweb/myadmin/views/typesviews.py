@@ -1,6 +1,6 @@
 from django.shortcuts import render,reverse
 from django.http import HttpResponse,JsonResponse
-from .. models import Types
+from .. models import Types,Goods
 
 
 # 获取所有的分类信息，由于需要重复利用，写成函数调用
@@ -77,22 +77,28 @@ def index(request):
 
 def delete(request):
     tid = request.GET.get('tid',None)
-
+    print(tid)
     # 判断当前类下是否有子类,pid父级，tid获取的request.GET.get（）对象的'uid'的值
     num = Types.objects.filter(pid = tid).count()
-
-    if num !=0:
+    print(num)
+    if num >0:
         data = {'msg':'当前类下有子类，不能删除', 'code':1}
     else:
-        # 当后续部分写完后，需要判断当前类下是否有商品，
-        
-        ob = Types.objects.get(id = tid)
-        # 删除的ob是一整条数据
-        ob.delete()
+        # 当后续部分写完后，需要判断当前类下是否有商品，typeid外键必须为一个对象
+        # type_id = Types.objects.get(pid = tid)
+        num1 = Goods.objects.filter(typeid =(Types.objects.filter(pid = tid))).count()
+        if num1 >0:
+            data = {'msg':'当前类下有商品，不能删除', 'code':1}
+        else:
+            ob = Types.objects.get(id = tid)
+            # 删除的ob是一整条数据
+            ob.delete()
 
-        data = {'msg':'删除成功', 'code':0}
+            data = {'msg':'删除成功', 'code':0}
 
     return JsonResponse(data)
+
+
 
 def edit(request):
     # 分类不允许随便删，所以，对应地也不可以随便修改，给管理员用的，不是用户用的

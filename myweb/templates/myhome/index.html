@@ -72,11 +72,11 @@
                                     <div class="area-bg">
                                         <div class="menu-srot">
                                             <div class="sort-side">
-                                            {% for vv in v.sub %}
+                                            {{ for vv in v.sub }}
                                                 <dl class="dl-sort">
                                                     <dt><a href="{% url 'myhome_list' vv.id %}"><span>{{ vv.name }}</span></a></dt>
                                                     {% for vvv in vv.goodssub %}
-                                                    <dd><a href="{% url 'myhome_info' vvv.id %}"><span>{{ vvv.title }}</span></a></dd>
+                                                    <dd><a href="{% url 'myhome_info' vvv.id %}"><span>{{ vvv.info }}</span></a></dd>
                                                     {% endfor %}
                                                 </dl>
                                             {% endfor %}
@@ -100,8 +100,8 @@
     </div>
 
 {% endblock %}
-
 {% block con %}
+
     <div class="shopMainbg">
 
         <div class="shopMain" id="shopmain">
@@ -126,7 +126,7 @@
                                         {{ vv.title }}
                                     </div>
                                     <div class="sub-title ">
-                                        ¥{{ vv.price }}
+                                        ￥{{ vv.price }}
                                     </div>
                                     <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                                 </div>

@@ -53,7 +53,7 @@ def PageShow(count,request):
         else:
             s += '<li ><a href="?p='+str(x)+u+'">'+str(x)+'</a></li>'
 
-    if p+1 >= count:
+    if p >= count:
         s += '<li class="am-disabled"><a href="?p='+str(count)+u+'">下一页</a></li>'
     else:
         s += '<li><a href="?p='+str(p+1)+u+'">下一页</a></li>'

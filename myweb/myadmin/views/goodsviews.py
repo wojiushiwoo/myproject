@@ -65,7 +65,19 @@ def add(request):
         return HttpResponse('<script>alert("添加成功");location.href="'+reverse('myadmin_goods_list')+'"</script>')
 
 def index(request):
+    # 列表中需要有分页功能
     glist = Goods.objects.all()
+
+    # 分页
+    from django.core.paginator import Paginator
+    # 实例化分页对象，参数1：数据集合，参数2：每页显示 的条数
+    paginator = Paginator(glist,10)
+    # 获取当前的页码
+    page = request.GET.get('p',1)
+    # 获取当前页的数据
+    glist = paginator.page(page)
+
+
 
     context = {'glist':glist}
 
